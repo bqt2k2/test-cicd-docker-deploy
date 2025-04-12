@@ -4,8 +4,23 @@ import globals from "globals";
 import pluginReact from "eslint-plugin-react";
 
 
-export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs,jsx}"], plugins: { js }, extends: ["js/recommended"] },
-  { files: ["**/*.{js,mjs,cjs,jsx}"], languageOptions: { globals: globals.browser } },
-  pluginReact.configs.flat.recommended,
-]);
+export default [
+  {
+    files: ['**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'commonjs', // hoặc 'module' nếu dùng import/export
+      globals: {
+        require: 'readonly',
+        module: 'readonly',
+        __dirname: 'readonly',
+        process: 'readonly'
+      }
+    },
+    rules: {
+      // các rule tùy ý
+    }
+  }
+];
+
+
