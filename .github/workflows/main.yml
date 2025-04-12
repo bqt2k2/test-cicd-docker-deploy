@@ -26,4 +26,14 @@ jobs:
       - name: 🐳 (Optional) Build Docker image
         run: docker build -t my-node-app .
 
+      - name: 🧹 Run Linter
+        run: npm run lint
+      - name: 🔨 Build Docker Image
+        run: docker build -t yourdockerusername/project-name .
+
+      - name: 📦 Push Docker Image to Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          docker push yourdockerusername/project-name
+
       # 👉 Thêm bước deploy nếu cần (Heroku, VPS, Docker Hub...)
