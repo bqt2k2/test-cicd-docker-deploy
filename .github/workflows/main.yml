@@ -1,0 +1,29 @@
+name: CI/CD for Node.js App
+
+on:
+  push:
+    branches: [ main ]  # mỗi lần push lên branch main thì chạy CI/CD
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v2
+
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: ✅ Run tests
+        run: npm test
+
+      - name: 🐳 (Optional) Build Docker image
+        run: docker build -t my-node-app .
+
+      # 👉 Thêm bước deploy nếu cần (Heroku, VPS, Docker Hub...)
