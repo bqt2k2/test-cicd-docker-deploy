@@ -6,21 +6,19 @@ import pluginReact from "eslint-plugin-react";
 
 export default [
   {
-    files: ['**/*.js'],
+    files: ["**/*.js"],
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'commonjs', // hoặc 'module' nếu dùng import/export
+      ecmaVersion: 2022,
       globals: {
-        require: 'readonly',
-        module: 'readonly',
-        __dirname: 'readonly',
-        process: 'readonly'
-      }
+        require: "readonly",
+        module: "readonly",
+      },
     },
     rules: {
-      // các rule tùy ý
+      // Các rule khác của bạn (nếu có)
     }
   }
-];
+]
+
 
 
